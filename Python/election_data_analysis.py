@@ -1,0 +1,17 @@
+import pandas as pd
+df=pd.read_csv('Indian_election_dataset.csv')
+df.info()
+
+df=df.drop(['pc_no','pc_name','partyabbre'],axis=1)
+df=df.drop_duplicates()
+df=df.rename(columns={'st_name':'state','cand_name':'candidate','partyname':'party_name','totvotpoll':'tot_vot_poll'})
+df=df.dropna(subset=(['state','year']))
+df=df.dropna(subset=(['cand_sex','party_name']))
+df['electors']=df['electors'].fillna(df['electors'].median())
+df=df.rename(columns={'pc_type':'reservation_category'})
+df['year']=df['year'].astype(int)
+df['cand_sex']=df['cand_sex'].str.replace('F','Female')
+df['reservation_category']=df['reservation_category'].fillna('OTHERS')
+df=df.drop('candidate',axis=1)
+df['tot_vot_poll']=df['tot_vot_poll'].fillna(df['tot_vot_poll'].median())
+df.to_csv('election_cleaned_data.csv',index=False)
