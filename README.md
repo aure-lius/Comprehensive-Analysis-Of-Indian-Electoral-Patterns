@@ -1,4 +1,4 @@
-# 🌍 Indian Election Data Dashboard
+# 🌍 Comprehensive Analysis Of Indian Electoral Patterns
 
 [![Tableau](https://img.shields.io/badge/Visualization-Tableau-blue)](https://www.tableau.com/) 
 [![Python](https://img.shields.io/badge/Python-Pandas-green)](https://pandas.pydata.org/) 
